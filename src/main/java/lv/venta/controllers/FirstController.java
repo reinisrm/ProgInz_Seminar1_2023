@@ -67,6 +67,9 @@ public class FirstController {
 		}
 		return "error-page"; // paradis error-page.html lapu
 	}
+	//kontrolieris, kas atgriez visus produktus
 	
+	//uztaisit html lapu, kas var visus produktus attelot
+	//kontrolieris, kas izfiltre visus produktus, kuru cena ir mazaka par 2
 	
 }
