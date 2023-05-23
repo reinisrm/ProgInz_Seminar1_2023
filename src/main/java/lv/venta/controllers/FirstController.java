@@ -68,7 +68,11 @@ public class FirstController {
 		return "error-page"; // paradis error-page.html lapu
 	}
 	//kontrolieris, kas atgriez visus produktus
-	
+	@GetMapping("/allProducts") //localhost:8080/allProducts
+	public String allProductsFunc(Model model) {
+		model.addAttribute("myAllProducts", allProducts);
+		return "all-products-page";
+	}
 	//uztaisit html lapu, kas var visus produktus attelot
 	//kontrolieris, kas izfiltre visus produktus, kuru cena ir mazaka par 2
 	
