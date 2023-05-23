@@ -73,7 +73,20 @@ public class FirstController {
 		model.addAttribute("myAllProducts", allProducts);
 		return "all-products-page";
 	}
-	//uztaisit html lapu, kas var visus produktus attelot
-	//kontrolieris, kas izfiltre visus produktus, kuru cena ir mazaka par 2
-	
+	//kontrolieris, kas izfiltre visus produktus, kuru cena ir mazaka par noteiktu
+	@GetMapping("/allProducts/{price}") //localhost:8080/allProducts/1.99
+	public String allProductsByPrice(@PathVariable("price") float price, Model model) {
+		if(price > 0) {
+			ArrayList<Product> allProductsWithPriceLess = new ArrayList<>();
+			for(Product temp: allProducts) {
+				if(temp.getPrice() < price) {
+					allProductsWithPriceLess.add(temp);
+					
+				}
+			}
+			model.addAttribute("myAllProducts", allProductsWithPriceLess);
+			return "all-products-page";
+		}
+		return "error-page";
+	}
 }
