@@ -17,9 +17,9 @@ public class FirstController {
 	
 	private ArrayList<Product> allProducts
 	= new ArrayList<>(Arrays.asList(
-			new Product(1, "Abols", 3.99f, "Sarkans", 3),
-			new Product(2, "Burkans", 0.33f, "Oranzs", 2),
-			new Product(3, "Gurkis", 1.22f, "Zals", 6)));
+			new Product("Abols", 3.99f, "Sarkans", 3),
+			new Product("Burkans", 0.33f, "Oranzs", 2),
+			new Product("Gurkis", 1.22f, "Zals", 6)));
 	@GetMapping("/hello") //tiks izsaukta, ja url bus localhost:8080/hello
 	public String helloFunc() {
 		System.out.println("Mans pirmais kontrolieris ir nostradajis");
@@ -36,7 +36,7 @@ public class FirstController {
 	
 	@GetMapping("/product") //localhost:8080/product
 	public String prodFunc(Model model) {
-		Product prod = new Product(1, "Abols", 3.99f, "Sarkans", 3);
+		Product prod = new Product("Abols", 3.99f, "Sarkans", 3);
 		model.addAttribute("myProduct", prod);
 		return "product-page";
 	}
@@ -98,7 +98,8 @@ public class FirstController {
 	
 	@PostMapping("/insert")
 	public String insertProductPostFunc(Product product) {  //tiek sanemts aizpildits produkts
-		allProducts.add(product);
+		Product prod = new Product(product.getTitle(), product.getPrice(), product.getDescription(), product.getQuantity());
+		allProducts.add(prod);
 		return "redirect:/allProducts"; // izsaucam get kontrolieri localhost:8080/allProducts
 	}
 	
