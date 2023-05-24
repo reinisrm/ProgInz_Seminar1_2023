@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lv.venta.models.Product;
@@ -89,4 +90,21 @@ public class FirstController {
 		}
 		return "error-page";
 	}
+	
+	@GetMapping("/insert") //localhost:8080/insert
+	public String insertProductFunc(Product product) {  //tiek padots tuksh produkts
+		return "insert-page"; //paradis insert-page.html lapu
+	}
+	
+	@PostMapping("/insert")
+	public String insertProductPostFunc(Product product) {  //tiek sanemts aizpildits produkts
+		allProducts.add(product);
+		return "redirect:/allProducts"; // izsaucam get kontrolieri localhost:8080/allProducts
+	}
+	
+	
+	
+	
+	
+	
 }

@@ -49,6 +49,8 @@ public class Product {
                 this.description = description;
                 this.quantity = quantity;
         }
+     
+        
         
         public Product() {}
 
