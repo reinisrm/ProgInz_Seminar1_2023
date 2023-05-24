@@ -102,10 +102,39 @@ public class FirstController {
 		allProducts.add(prod);
 		return "redirect:/allProducts"; // izsaucam get kontrolieri localhost:8080/allProducts
 	}
+	//TODO update
+	//TODO izveidot get kontrolieri, kas nolasiis produkta id un pec ta atradis produktu un nosutiis caur model objektu uz frontent
+	// + paradit update page
+	@GetMapping("/update/{id}") //localhost8080:/update/1
+	public String updateProductByIdGetFunc(@PathVariable("id") int id, Model model) {
+		for(Product temp: allProducts) {
+			if(temp.getId() == id) {
+				model.addAttribute("product",temp);
+				return "update-page";
+			}
+		}
+		return "error-page";
+	}
 	
-	
-	
-	
+	//TODO izveidot update-page.html, kas stradas uz cita endpointa
+	//TODO izveidot post kontrolieri, kas sanemto objektu redige ari allProducts sarakstaa
+	@PostMapping("/update/{id}")
+	public String updateProductByIdPostFunc(@PathVariable("id")int id, Product product) { //ienak redigetais
+		for(Product temp: allProducts) {
+			if(temp.getId() == id) {
+				temp.setTitle(product.getTitle());
+				temp.setPrice(product.getPrice());
+				temp.setDescription(product.getDescription());
+				temp.setQuantity(product.getQuantity());
+				return "redirect:/product/"+temp.getTitle(); //tiks izsaukts localhost:8080/product/Abols
+			}
+		}
+		return "redirect:/error"; //tiks izsaukts localhost:8080/error
+	}
+	@GetMapping("/error")
+	public String errorFunc() {
+		return "error-page";
+	}
 	
 	
 }
