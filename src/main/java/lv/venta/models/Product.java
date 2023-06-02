@@ -11,12 +11,12 @@ public class Product {
         private int id;
         
         @NotNull
-        @Pattern(regexp = "[A-Z] {1} [a-z\\ ]+")
-        @Size(min = 3, max = 30)
+        @Pattern(regexp = "[A-Z] {1} [a-z\\ ]+", message = "Pirmajam burtam jabut lielajam")
+        @Size(min = 3, max = 30, message = "Jabut vismaz 3 un ne vairak ka 30 simboliem")
         private String title;
         
-        @Min(value = 0)
-        @Max(value = 10000)
+        @Min(value = 0, message = "Jabut 0 un ne vairak ka 10000 simboliem")
+        @Max(value = 10000, message = "Jabut 0 un ne vairak ka 10000 simboliem")
         private float price;
         
         @NotNull
