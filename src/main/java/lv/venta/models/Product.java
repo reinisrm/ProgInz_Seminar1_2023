@@ -11,7 +11,7 @@ public class Product {
         private int id;
         
         @NotNull
-        @Pattern(regexp = "[A-Z] {1} [a-z\\ ]+", message = "Pirmajam burtam jabut lielajam")
+        //@Pattern(regexp = "[A-ZĀČĒĪĶĻŅŠŪŽ] {1} [a-žāčēīķļņšūž\\ ]+", message = "Pirmajam burtam jabut lielajam")
         @Size(min = 3, max = 30, message = "Jabut vismaz 3 un ne vairak ka 30 simboliem")
         private String title;
         
@@ -20,7 +20,7 @@ public class Product {
         private float price;
         
         @NotNull
-        @Pattern(regexp = "[A-Z] {1} [a-z\\ ]+")
+        //@Pattern(regexp = "[A-ZĀČĒĪĶĻŅŠŪŽ] {1} [a-žāčēīķļņšūž\\ ]+", message = "Pirmajam burtam jabut lielajam")
         @Size(min = 3, max = 30)   
         private String description;
         

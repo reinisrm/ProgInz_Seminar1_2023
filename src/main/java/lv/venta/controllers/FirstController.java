@@ -98,7 +98,10 @@ public class FirstController {
 	public String insertProductFunc(Product product) { // tiek padots tuksh produkts
 		return "insert-page"; // paradis insert-page.html lapu
 	}
-
+	
+	//TODO Uzlikt visam validacijam savus zinojumus
+	//TODO nodrosinat validaciju ari update gadijuma
+	
 	@PostMapping("/insert")
 	public String insertProductPostFunc(@Valid Product product, BindingResult result) { // tiek sanemts aizpildits produkts
 		if(!result.hasErrors()) {
@@ -128,13 +131,17 @@ public class FirstController {
 	// TODO izveidot post kontrolieri, kas sanemto objektu redige ari allProducts
 	// sarakstaa
 	@PostMapping("/update/{id}")
-	public String updateProductByIdPostFunc(@PathVariable("id") int id, Product product) { // ienak redigetais
+	public String updateProductByIdPostFunc(@PathVariable("id") int id, @Valid Product product, BindingResult result) { // ienak redigetais
+		if(!result.hasErrors()) {
 		try {
 		Product temp = crudService.updateProductByParams(id, product.getTitle(), 
 				product.getPrice(), product.getDescription(), product.getQuantity());
 				return "redirect:/product/" + temp.getTitle(); // tiks izsaukts localhost:8080/product/Abols
 		} catch (Exception e) {
 			return "redirect:/error"; // tiks izsaukts localhost:8080/error
+		} 
+		} else {
+			return "update-page";
 		}
 		
 	}
