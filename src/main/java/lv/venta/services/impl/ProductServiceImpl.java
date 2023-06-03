@@ -32,13 +32,18 @@ public class ProductServiceImpl implements iCRUDProductService, iFilteringProduc
 
 	// TODO
 	@Override
-	public Product retrieveOneProductByTitle(String title) throws Exception {
+	public ArrayList<Product> retrieveAllProductsByTitle(String title) throws Exception {
+		if(title != null) {
+		ArrayList<Product> allProductsWithTitle = new ArrayList<>();
 		for (Product temp : allProducts) {
 			if (temp.getTitle().equals(title)) {
-				return temp;
+				allProductsWithTitle.add(temp);
 			}
 		}
-		throw new Exception("Wrong Title");
+		return allProductsWithTitle;
+		} else {
+			throw new Exception("Wrong title");
+		}
 	}
 
 	@Override

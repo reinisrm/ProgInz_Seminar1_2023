@@ -49,9 +49,9 @@ public class FirstController {
 	public String productByParamFunc(@RequestParam("title") String title, Model model) {
 		if (title != null) {	
 			try {
-				Product temp = crudService.retrieveOneProductByTitle(title);
+				ArrayList<Product> temp = crudService.retrieveAllProductsByTitle(title);
 				model.addAttribute("myProduct", temp);
-				return "product-page";
+				return "all-products-page";
 			} catch (Exception e) {
 				return "error-page"; // paradis error-page.html lapu
 			}
@@ -66,9 +66,9 @@ public class FirstController {
 	public String productByParamFunc2(@PathVariable("title") String title, Model model) {
 		if (title != null) {	
 			try {
-				Product temp = crudService.retrieveOneProductByTitle(title);
+				ArrayList<Product> temp = crudService.retrieveAllProductsByTitle(title);
 				model.addAttribute("myProduct", temp);
-				return "product-page";
+				return "all-products-page";
 			} catch (Exception e) {
 				return "error-page"; // paradis error-page.html lapu
 			}
