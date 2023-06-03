@@ -9,7 +9,7 @@ import lv.venta.models.Product;
 import lv.venta.services.iCRUDProductService;
 import lv.venta.services.iFilteringProductService;
 
-@Service
+//@Service
 public class ProductServiceImpl implements iCRUDProductService, iFilteringProductService {
 
 	private ArrayList<Product> allProducts = new ArrayList<>(Arrays.asList(new Product("Abols", 3.99f, "Sarkans", 3),
